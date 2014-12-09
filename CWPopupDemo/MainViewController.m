@@ -52,12 +52,14 @@
     [self
         presentPopupViewController:samplePopupViewController
                           animated:YES
+                 animationDuration:1.0f
                         completion:^(void) { NSLog(@"popup view presented"); }];
 }
 
 - (void)dismissPopup {
     if (self.popupViewController != nil) {
         [self dismissPopupViewControllerAnimated:YES
+                               animationDuration:1.0f
                                       completion:^{
                                           NSLog(@"popup view dismissed");
                                       }];

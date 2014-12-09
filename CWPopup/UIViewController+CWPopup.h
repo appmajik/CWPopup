@@ -16,8 +16,10 @@
 
 - (void)presentPopupViewController:(UIViewController *)viewControllerToPresent
                           animated:(BOOL)flag
+                 animationDuration:(CGFloat)animationDuration
                         completion:(void (^)(void))completion;
 - (void)dismissPopupViewControllerAnimated:(BOOL)flag
+                         animationDuration:(CGFloat)animationDuration
                                 completion:(void (^)(void))completion;
 - (void)setUseBlurForPopup:(BOOL)useBlurForPopup;
 - (BOOL)useBlurForPopup;

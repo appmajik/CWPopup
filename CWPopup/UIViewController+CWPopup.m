@@ -262,6 +262,7 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
 
 - (void)presentPopupViewController:(UIViewController *)viewControllerToPresent
                           animated:(BOOL)flag
+                 animationDuration:(CGFloat)animationDuration
                         completion:(void (^)(void))completion {
     if (self.popupViewController == nil) {
         // initial setup
@@ -340,7 +341,7 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
                 finalFrame.size.width, finalFrame.size.height);
             viewControllerToPresent.view.frame = initialFrame;
             [self.view addSubview:viewControllerToPresent.view];
-            [UIView animateWithDuration:ANIMATION_TIME
+            [UIView animateWithDuration:animationDuration
                 delay:0
                 options:UIViewAnimationOptionCurveEaseInOut
                 animations:^{
@@ -370,6 +371,7 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
 }
 
 - (void)dismissPopupViewControllerAnimated:(BOOL)flag
+                         animationDuration:(CGFloat)animationDuration
                                 completion:(void (^)(void))completion {
     UIView *blurView = objc_getAssociatedObject(self, &CWBlurViewKey);
     [self.popupViewController willMoveToParentViewController:nil];
@@ -377,7 +379,7 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
     [self.popupViewController beginAppearanceTransition:NO animated:flag];
     if (flag) {  // animate
         CGRect initialFrame = self.popupViewController.view.frame;
-        [UIView animateWithDuration:ANIMATION_TIME
+        [UIView animateWithDuration:animationDuration
             delay:0
             options:UIViewAnimationOptionCurveEaseInOut
             animations:^{
